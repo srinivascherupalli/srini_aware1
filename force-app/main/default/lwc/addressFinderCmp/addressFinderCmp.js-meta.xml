@@ -1,52 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    
     <apiVersion>50.0</apiVersion>
-    
     <isExposed>true</isExposed>
-    
     <targets>
-        
         <target>lightning__FlowScreen</target>
-        
     </targets>
-    
     <targetConfigs>
-        
         <targetConfig targets="lightning__FlowScreen">
-            
             <property name="label" type="String" role="inputOnly" description="The label for the addressinput"/>
-            
             <property name="required" type="Boolean" role="inputOnly"/>
-            
             <property name="lookupPlaceholder" type="String" role="inputOnly" description="The search box placeholder if needed"/>
-            
             <property name="styleClass" type="String" role="inputOnly" description="The CSS class name"/>
-            
             <property name="streetLabel" type="String" role="inputOnly" description="the label for the street input"/>
-            
             <property name="cityLabel" type="String" role="inputOnly" description="the label for the city input"/>
-            
             <property name="postCodeLabel" type="String" role="inputOnly" description="the label for the post code input"/>
-            
             <property name="provinceLabel" type="String" role="inputOnly" description="the label for the province input"/>
-            
             <property name="countryLabel" type="String" role="inputOnly" description="the label for the country input"/>
-            
-            
             <property name="streetValue" type="String" description="the value for the street input"/>
-            
             <property name="cityValue" type="String" description="the value for the city input"/>
-            
             <property name="postCodeValue" type="String" description="the value for the post code input"/>
-            
             <property name="provinceValue" type="String" description="the value for the province input"/>
-            
             <property name="countryValue" type="String" description="the value for the country input"/>
-            
         </targetConfig>
-        
     </targetConfigs>
-    
 </LightningComponentBundle>
