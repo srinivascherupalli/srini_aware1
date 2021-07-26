@@ -1,0 +1,34 @@
+<template>
+  <template if:true={isShow}>
+  <div class="notification-div flex p-around_large p-md-horizontal_x-large">
+    <div class="icon-div">
+      <c-ng-icon
+        name="info"
+        size="large"
+        type="utility"
+        color="#0052C2"
+      ></c-ng-icon>
+    </div>
+
+    <div class="content-div p-left_large">
+      <h1 class="m-top_xx-small">Accept Offer &amp; enrol</h1>
+      <p class="content m-top_xx-small">
+        Congratulations, you have been offered a place. Complete the enrolment form to proceed &amp; except the offer.
+      </p>
+    </div>
+
+    <div class="actions-div">
+      <c-ng-button
+        button-label="Complete Enrolment"
+        button-style="primary"
+        link
+        type="button"
+        button-link={actionUrl}
+      >
+      </c-ng-button>
+      <span class="p-md-left_medium p-top_x-small action-right">
+    </span>
+    </div>
+  </div>
+  </template>
+</template>

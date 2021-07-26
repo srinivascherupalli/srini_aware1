@@ -1,0 +1,41 @@
+<!--
+ - Created by LookThink
+ -->
+<template>
+    <section role="dialog"
+             tabindex="-1"
+             aria-modal="true"
+             aria-labelledby={headingId}
+             aria-describedby={contentId}
+             class={sectionClass}>
+        <div class="slds-modal__container">
+
+            <header class={headClass}>
+                <lightning-button-icon alternative-text="Close"
+                                       icon-name="utility:close"
+                                       size="large"
+                                       variant="bare-inverse"
+                                       class="slds-modal__close"
+                                       onclick={handleClose} >
+                </lightning-button-icon>
+                <template if:false={headless}>
+                    <h2 if:true={header} id={headingId} class={headingClass}>{header}</h2>
+                    <p if:true={tagLine} class="slds-m-top_x-small">
+                        <lightning-formatted-text value={tagLine}
+                                                  linkify>
+                        </lightning-formatted-text>
+                    </p>
+                </template>
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium" id={contentId}>
+                <slot name="content"></slot>
+            </div>
+
+            <footer if:false={footless} class={footerClass}>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    </section>
+    <div class={backdropClass}></div>
+</template>

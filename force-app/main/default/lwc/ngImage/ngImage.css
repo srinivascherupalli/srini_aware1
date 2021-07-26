@@ -1,0 +1,9 @@
+.profile-icon {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  min-width: 80px;
+}

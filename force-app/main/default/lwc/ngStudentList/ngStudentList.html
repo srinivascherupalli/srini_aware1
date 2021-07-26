@@ -1,0 +1,14 @@
+<template>
+    <template for:each={studentList} for:item="student">
+        <div class="p-bottom_small" key={student.Id} >
+            <c-ng-card 
+                key={student.Id} 
+                first-name={student.FirstName} 
+                last-name={student.LastName}
+                school-name={student.DET_Current_School_Name__c}
+                student-id={student.Id}
+                profile-picture-url={student.Profile_Picture_URL__c}
+            ></c-ng-card>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,6 @@
+.notification-div {
+    position: absolute;
+    height: 113px;
+    background: var(--light-ash);
+    border-radius: 6px;
+}

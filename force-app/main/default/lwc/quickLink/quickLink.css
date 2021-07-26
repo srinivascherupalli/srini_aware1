@@ -1,0 +1,39 @@
+svg.link {
+  width: 13px;
+  height: 12px;
+  fill: var(--primary-color);
+}
+
+a.text-link {
+  color: var(--dark-color);
+  font-size: 16px;
+  margin-top: .5rem;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  a.text-link {
+    font-size: 20px;
+  }
+}
+
+a.text-link:hover {
+  color: var(--primary-color);
+}
+
+a.text-link span {
+  margin-right: 10px;
+}
+
+.text-link.border-style {
+  border-bottom: 3px solid var(--border-color);
+}
+
+.text-link.text-bold {
+  font-family: 'VIC-Bold';
+  font-weight: normal;
+}
+
+a.text-link:hover {
+  text-decoration: none;
+}

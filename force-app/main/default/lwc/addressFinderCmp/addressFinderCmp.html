@@ -1,0 +1,21 @@
+<template>
+    <lightning-input-address
+        class={styleClass}
+        address-label={label}
+        street-label={streetLabel}
+        city-label={cityLabel}
+        country-label={countryLabel}
+        province-label={provinceLabel}
+        postal-code-label={postCodeLabel}
+        street={streetValue}
+        city={cityValue}
+        country={countryValue}
+        province={provinceValue}
+        postal-code={postCodeValue}
+        required={required}
+        field-level-help={helpText}
+        address-lookup-placeholder={lookupPlaceholder}
+        onchange={handleChange}
+        show-address-lookup="true">
+    </lightning-input-address>
+</template>

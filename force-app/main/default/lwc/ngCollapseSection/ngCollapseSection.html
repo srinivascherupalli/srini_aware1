@@ -1,0 +1,93 @@
+<template>
+  <template if:true={heading}>
+    <div class="ng-box ng-box-full flex p-vertical_medium p-horizontal_medium">
+      <div class="flex flex-grow-4">
+        <div class="ng-box-full">
+          <div>
+            <p class="font-regular tiny">{title}</p>
+            <h3>{heading}</h3>
+          </div>
+
+          <div class={divClass}>
+            <template if:true={label1}>
+              <div class="m-top_large">
+                <p class="font-regular tiny">{label1}</p>
+                <template if:true={value1}>
+                  <p class="strong">{value1}</p>
+                </template>
+              </div>
+            </template>
+
+            <template if:true={label2}>
+              <div class="m-top_large">
+                <p class="font-regular tiny">{label2}</p>
+                <template if:true={value2}>
+                  <p class="strong">{value2}</p>
+                </template>
+              </div>
+            </template>
+
+            <template if:true={label3}>
+              <div class="m-top_large">
+                <p class="font-regular tiny">{label3}</p>
+                <template if:true={value3}>
+                  <p class="strong">{value3}</p>
+                </template>
+              </div>
+            </template>
+
+            <template if:true={label4}>
+              <div class="m-top_large">
+                <p class="font-regular tiny">{label4}</p>
+                <template if:true={value4}>
+                  <p class="strong">{value4}</p>
+                </template>
+              </div>
+            </template>
+
+            <template if:true={phone}>
+              <div class="m-top_large">
+                <p class="font-regular tiny">PHONE NUMBER</p>
+                <template if:true={phone.Phone}>
+                  <p class="strong">{phone.Phone}</p>
+                </template>
+              </div>
+            </template>
+
+            <template if:true={address}>
+              <template if:true={address.ShippingAddress}>
+                <div class="m-top_large">
+                  <p class="font-regular tiny">ADDRESS</p>
+                  <p class="strong">
+                    <template if:true={address.ShippingAddress.street}>
+                      {address.ShippingAddress.street},&nbsp;
+                    </template>
+
+                    <template if:true={address.ShippingAddress.city}>
+                      {address.ShippingAddress.city},&nbsp;
+                    </template>
+
+                    <template if:true={address.ShippingAddress.postalCode}>
+                      {address.ShippingAddress.postalCode}
+                    </template>
+                  </p>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <template if:true={label1}>
+        <div class="flex expand-div-action" onclick={toggleSwitch}>
+          <c-ng-icon
+            name={iconClass}
+            type="utility"
+            size="small"
+            color="#0052c2"
+          ></c-ng-icon>
+        </div>
+      </template>
+    </div>
+  </template>
+</template>

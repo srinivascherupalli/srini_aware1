@@ -1,0 +1,343 @@
+<template>
+  <div>
+    <template if:true={applicationList}>
+      <template for:each={applicationList} for:item="application">
+        <c-ng-application-path
+          key={application.Id}
+          status={application.hed__Application_Status__c}
+          type={application.hed__Application_Type__c}
+        ></c-ng-application-path>
+        
+        <c-ng-notification
+          key={application.Id}
+          status={application.hed__Application_Status__c}
+        >
+        </c-ng-notification>
+      </template>
+    </template>
+
+    <div class="flex-container">
+      <div class="flex-div">
+        <template if:true={applicationList}>
+          <template for:each={applicationList} for:item="application">
+            <div
+              key={application.Id}
+              class="box p-left_none p-vertical_x-small p-right_x-small"
+            >
+              <div
+                class="ng-box ng-box-full ng-box-colored flex p-vertical_medium p-horizontal_large"
+              >
+                <div class="flex flex-grow-4 p-vertical_xx-small flex-column">
+                  <div>
+                    <p class="tiny">FIRST NAME</p>
+                    <template if:true={application.DET_Student_Name__c}>
+                      <h3>{application.DET_Student_Name__c}</h3>
+                    </template>
+                  </div>
+
+                  <div class="m-top_large">
+                    <p class="tiny">STATUS</p>
+                    <template if:true={application.hed__Application_Status__c}>
+                      <p class="info-tag tiny strong">
+                        {application.hed__Application_Status__c}
+                      </p>
+                    </template>
+                  </div>
+
+                  <template if:true={application.DET_Closed_Reason__c}>
+                    <div class="m-top_large">
+                      <p class="tiny">CLOSED REASON</p>
+
+                      <p class="info-tag tiny strong">
+                        {application.DET_Closed_Reason__c}
+                      </p>
+                    </div>
+                  </template>
+
+                  <div class="m-top_large">
+                    <p class="tiny">LAST UPDATED</p>
+                    <p class="strong">
+                      <template if:true={application.LastModifiedDate}>
+
+                        <lightning-formatted-date-time
+                          value={application.LastModifiedDate}
+                          hour="2-digit"
+                          minute="2-digit"
+                          >
+                        </lightning-formatted-date-time>&nbsp;
+
+                        <lightning-formatted-date-time
+                          value={application.LastModifiedDate}
+                          day="numeric"
+                          year="numeric"
+                          month="numeric"
+                          >
+                        </lightning-formatted-date-time>
+                        <!--<lightning-formatted-date-time value={application.LastModifiedDate}></lightning-formatted-date-time>-->
+                      </template>
+                    </p>
+                  </div>
+
+                  <div class="m-top_large">
+                    <p class="tiny">REQUESTED START DATE</p>
+                    <p class="strong">
+                      <template if:true={application.CreatedDate}>
+                        <lightning-formatted-date-time
+                          value={application.CreatedDate}
+                          day="numeric"
+                          year="numeric"
+                          month="numeric"
+                          >
+                        </lightning-formatted-date-time>
+                      </template>
+                    </p>
+                  </div>
+
+                  <div class="m-top_large">
+                    <p class="tiny">ENROLMENT REASON</p>
+                    <p class="strong">
+                      <template if:true={application.DET_Enrolment_Reason__c}>
+                        {application.DET_Enrolment_Reason__c}
+                      </template>
+                    </p>
+                  </div>
+
+                  <div class="m-top_large">
+                    <p class="tiny">FRIENDS AT SCHOOL</p>
+                    <p class="strong">
+                      <template if:true={application.DET_Enrolment_Reason__c}>
+                        {application.DET_Friends_at_School__c}
+                      </template>
+                    </p>
+                  </div>
+
+                  <div class="m-top_large">
+                    <p class="tiny">NOTES</p>
+                    <p class="strong">
+                      <template if:true={application.DET_Notes__c}>
+                        {application.DET_Notes__c}
+                      </template>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex">
+                  <c-ng-card-actions
+                    student-id={application.hed__Applicant__c}
+                    application-id={application.Id}
+                    oncancelapplication={cancelApplication}
+                  ></c-ng-card-actions>
+                </div>
+              </div>
+            </div>
+
+            <div class="box p-around_x-small" key={application.Id}>
+              <div
+                class="ng-box ng-box-full flex p-vertical_medium p-horizontal_large"
+              >
+                <template if:true={applicationList}>
+                  <template for:each={applicationList} for:item="application">
+                    <template if:true={application.hed__Applicant__r}>
+                      <div
+                        class="p-vertical_xx-small ng-box-full"
+                        key={application.Id}
+                      >
+                        <div class="slds-grid slds-gutters">
+                          <div class="slds-col">
+                            <p class="font-regular tiny">STUDENT</p>
+                            <h3 class="font-regular strong">
+                              <template
+                                if:true={application.hed__Applicant__r.FirstName}
+                              >
+                                {application.hed__Applicant__r.FirstName}
+                              </template>
+                            </h3>
+                          </div>
+                        </div>
+                        <div class="slds-grid slds-gutters m-top_large">
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">FULL NAME</p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.FirstName}
+                              >
+                                {application.hed__Applicant__r.FirstName}
+                              </template>
+                              <template
+                                if:true={application.hed__Applicant__r.LastName}
+                              >
+                                {application.hed__Applicant__r.LastName}
+                              </template>
+                            </p>
+                          </div>
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">
+                              CHILD PROTECTION ORDERS
+                            </p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.DET_Child_Protection_Court_Orders__c}
+                              >
+                                {application.hed__Applicant__r.DET_Child_Protection_Court_Orders__c}
+                              </template>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters m-top_large">
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">GENDER</p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.hed__Gender__c}
+                              >
+                                {application.hed__Applicant__r.hed__Gender__c}
+                              </template>
+                            </p>
+                          </div>
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">DATE OF BIRTH</p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.Birthdate}
+                              >
+                                {application.hed__Applicant__r.Birthdate}
+                                
+                              </template>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters m-top_large">
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">CURRENT YEAR LEVEL</p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.k12kit__Current_Grade_Level__c}
+                              >
+                                {application.hed__Applicant__r.k12kit__Current_Grade_Level__c}
+                              </template>
+                            </p>
+                          </div>
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">
+                              AUSTRALIAN EDUCATION YEARS
+                            </p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.DET_Years_In_Australian_System__c}
+                              >
+                                {application.hed__Applicant__r.DET_Years_In_Australian_System__c}
+                              </template>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters m-top_large">
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">
+                              SERIOUS MEDICAL ISSUES
+                            </p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.DET_Serious_Medical_Issues__c}
+                              >
+                                {application.hed__Applicant__r.DET_Serious_Medical_Issues__c}
+                              </template>
+                            </p>
+                          </div>
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">EXTERNAL SUPPORTS</p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.DET_External_Supports__c}
+                              >
+                                {application.hed__Applicant__r.DET_External_Supports__c}
+                              </template>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters m-top_large">
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">WELLBEING CONCERNS</p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.DET_Wellbeing_Concerns__c}
+                              >
+                                {application.hed__Applicant__r.DET_Wellbeing_Concerns__c}
+                              </template>
+                            </p>
+                          </div>
+                          <div class="slds-col slds-size_1-of-2">
+                            <p class="font-regular tiny">
+                              BEHAVIOUR CONDITIONS
+                            </p>
+                            <p class="strong">
+                              <template
+                                if:true={application.hed__Applicant__r.DET_Behavioural_Conditions__c}
+                              >
+                                {application.hed__Applicant__r.DET_Behavioural_Conditions__c}
+                              </template>
+                            </p>
+                          </div>
+                        </div>
+
+                        <!--<div class="slds-grid slds-gutters m-top_large">
+                <div class="slds-col slds-size_1-of-2">
+                  <p class="font-regular tiny">PREVIOUS SUSPENSIONS</p>
+                  <p class="strong"></p>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <p class="font-regular tiny">SUSPENSION DAYS</p>
+                  <p class="strong">{application.hed__Applicant__r.Id}</p>
+                </div>
+              </div>-->
+                      </div>
+                    </template>
+                  </template>
+                </template>
+              </div>
+            </div>
+
+            <div
+              class="box p-right_none p-vertical_x-small p-left_x-small"
+              key={application.Id}
+            >
+              <template if:true={application.Applying_To_School_Name__c}>
+                <div class="ng-box ng-box-full m-bottom_medium">
+                  <c-ng-collapse-section
+                    title="SCHOOL"
+                    heading={application.Applying_To_School_Name__c}
+                    label1="SCHOOL PREFERENCE ORDER"
+                    value1={application.DET_School_Preference_Sequence__c}
+                    address={application.hed__Applying_To__r}
+                    phone={application.hed__Applying_To__r}
+                  ></c-ng-collapse-section>
+                </div>
+              </template>
+              <template if:true={application.DET_current_school_dummy__c}>
+                <div class="ng-box ng-box-full m-bottom_medium">
+                  <c-ng-collapse-section
+                    title="CURRENT / PREVIOUS SCHOOL"
+                    heading={application.DET_current_school_dummy__r.Name}
+                  ></c-ng-collapse-section>
+                </div>
+              </template>
+
+              <!--<div class="ng-box ng-box-full m-top_medium">
+                <c-ng-collapse-section title="MOTHER" heading="Mother Name">
+                </c-ng-collapse-section>
+              </div>
+
+              <div class="ng-box ng-box-full m-top_medium">
+                <c-ng-collapse-section title="FATHER" heading="Father Name">
+                </c-ng-collapse-section>
+              </div>-->
+            </div>
+          </template>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,5 @@
+.ng-path .slds-path__nav .slds-is-active, 
+.ng-path .slds-path__nav .slds-is-active::before, 
+.ng-path .slds-path__nav .slds-is-active::after {
+  background: #4bca81;
+}

@@ -1,0 +1,25 @@
+.card-actions {
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+.card-actions .slds-has-divider_top-space {
+  padding: 0;
+  margin: 0;
+}
+.card-actions .slds-dropdown {
+  margin-left: -8.5rem;
+  margin-top: -1rem;
+}
+
+.expand-div-action {
+  cursor: pointer;
+}
+
+.hideDiv {
+  display: none;
+}
+
+.showDiv {
+  display: block;
+}

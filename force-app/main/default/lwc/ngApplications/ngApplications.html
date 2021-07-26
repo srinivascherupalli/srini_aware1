@@ -1,0 +1,15 @@
+<template>
+  <div class="box-component p-around_medium">
+    <h2 class="m-vertical_medium">Open Applications</h2>
+    <lightning-datatable
+      key-field="id"
+      data={applicationsList}
+      columns={columns}
+      hide-checkbox-column="true"
+    >
+    </lightning-datatable>
+    <div class="viewAllLink p-left_x-small">
+      <a aria-label="View All Applications" href="/s/applications/">View All</a>
+    </div>
+  </div>
+</template>

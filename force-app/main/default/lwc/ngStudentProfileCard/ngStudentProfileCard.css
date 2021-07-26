@@ -1,0 +1,53 @@
+.ng-student-profile-card .card-actions {
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+
+.ng-student-profile-card .slds-has-divider_top-space {
+  padding: 0;
+  margin: 0;
+}
+.ng-student-profile-card .card-actions .slds-dropdown {
+  margin-left: -8.5rem;
+  margin-top: -1rem;
+}
+
+.ng-student-profile-card .tool-tip {
+  width: 32px;
+  height: 32px;
+  background: var(--error-color);
+  margin-left: 3rem;
+  position: absolute;
+  border-radius: 50%;
+  padding: 5px;
+  text-align: center;
+}
+.ng-student-profile-card .profile-icon {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+}
+
+.ngBadge {
+  background-color: var(--warning-color);
+  border-radius: 2px !important;
+  padding: 5px 10px !important;
+}
+
+.student-profile-bottom {
+  background: var(--text-light);
+  border-radius: 0px 0px 4px 4px;
+}
+
+.student-profile-bottom .profile-icon {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+}

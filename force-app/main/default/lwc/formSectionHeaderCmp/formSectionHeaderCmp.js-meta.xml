@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    <apiVersion>50.0</apiVersion>
+    
+    <description>Form Section Header</description>
+    
+    <isExposed>true</isExposed>
+    
+    <masterLabel>Form Section Header</masterLabel>
+    
+
+    <targets>
+        
+        <target>lightning__FlowScreen</target>
+        
+    </targets>
+    
+
+    <targetConfigs>
+        
+        <targetConfig targets="lightning__FlowScreen">
+            
+            <property name="sectionName" type="String" description="Name of the section.  Will be displayed in header."/>
+            
+            <property name="editScreen" type="String" description="Screen name to go to when Edit is selected.
+            Leave blank to hide edit. CURRENTLY NAVIGATION NOT IMPLEMENTED."/>
+            
+            <property name="isOpen" type="Boolean" description="True if the section is open. The flow will be notified of changes to this property."/>
+            
+        </targetConfig>
+        
+    </targetConfigs>
+    
+
+</LightningComponentBundle>

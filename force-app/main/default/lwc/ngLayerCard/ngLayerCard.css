@@ -1,0 +1,19 @@
+.layer-card {
+  text-align: center;
+  padding-top: 3.3vw;
+  padding-bottom: 3.3vw;
+}
+
+.layer-card .icon-div {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background: var(--light-neutral);
+  margin: auto;
+  cursor: pointer;
+}
+
+.layer-card .icon-div .icon {
+  text-align: center;
+  /*padding: 1.5rem;*/
+}

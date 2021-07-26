@@ -1,0 +1,166 @@
+<template>
+  <template for:each={contactList} for:item="contactDetails">
+    <div
+      key={contactDetails.Id}
+      class="ng-box ng-box-full ng-box-colored ng-student-profile-card p-vertical_medium p-horizontal_medium"
+    >
+      <div class="flex">
+        <div class="flex flex-grow-4">
+          <c-ng-image
+            img-class="profile-icon"
+            img-url={contactDetails.Profile_Picture_URL__c}
+          ></c-ng-image>
+          <div class="content-div p-left_small p-top_x-small">
+            <h3>{contactDetails.FirstName}</h3>
+            <template if:true={contactDetails.k12kit__Current_Grade_Level__c}>
+            <p>
+              <span class="info-tag tiny font-regular m-top_small"
+                >{contactDetails.k12kit__Current_Grade_Level__c}</span
+              >
+            </p>
+            </template>
+          </div>
+        </div>
+        <div class="flex">
+          <c-ng-card-actions student-id={contactDetails.Id}></c-ng-card-actions>
+        </div>
+      </div>
+
+      <div class="slds-grid slds-gutters m-top_large">
+        <div class="slds-col slds-size_1-of-2">
+          <p class="font-regular tiny">FIRST NAME</p>
+          <p class="strong">
+            {contactDetails.FirstName}
+          </p>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+          <p class="font-regular tiny">LAST NAME</p>
+          <p class="strong">{contactDetails.LastName}</p>
+        </div>
+      </div>
+
+      <div class="slds-grid slds-gutters m-top_large">
+        <div class="slds-col slds-size_1-of-2">
+          <p class="font-regular tiny">MIDDLE NAME</p>
+          <p class="strong">{contactDetails.hed__Former_Middle_Name__c}</p>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+          <p class="font-regular tiny">GENDER</p>
+          <p class="strong">{contactDetails.hed__Gender__c}</p>
+        </div>
+      </div>
+
+      <div class="slds-grid slds-gutters m-top_large m-bottom_large">
+        <div class="slds-col slds-size_1-of-2">
+          <p class="font-regular tiny">DATE OF BIRTH</p>
+          <p class="strong">{contactDetails.Birthdate}</p>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+          <p class="font-regular tiny">CLASS</p>
+          <p class="strong">{contactDetails.k12kit__Current_Grade_Level__c}</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="student-profile-bottom p-vertical_medium p-horizontal_medium"
+      key={contactDetails.Id}
+    >
+      <template if:true={contactDetails.Primary_Educational_Institution__c}>
+        <div class="flex">
+          <div class="flex flex-grow-4">
+            <c-ng-image
+              img-class="profile-icon"
+              img-url={contactDetails.Current_School_Logo_URL__c}
+            ></c-ng-image>
+            <div class="content-div p-left_small p-top_small">
+              <h3>{contactDetails.DET_Current_School_Name__c}</h3>
+              <p class="small">
+                <template
+                  if:true={contactDetails.DET_Current_School_Address__c}
+                >
+                  {contactDetails.DET_Current_School_Address__c}
+                </template>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slds-grid slds-gutters m-top_large">
+          <div class="slds-col">
+            <p class="font-regular tiny">PHONE NUMBER</p>
+            <p class="strong">{contactDetails.DET_Current_School_Phone__c}</p>
+          </div>
+        </div>
+
+        <div class="slds-grid slds-gutters m-top_large">
+          <div class="slds-col">
+            <p class="font-regular tiny">WEBSITE</p>
+            <p class="strong">{contactDetails.DET_Current_School_Website__c}</p>
+          </div>
+        </div>
+
+        <div class="slds-grid slds-gutters m-top_large">
+          <div class="slds-col">
+            <p class="font-regular tiny">QUICK LINKS</p>
+          </div>
+        </div>
+        <template
+                if:true={contactDetails.Current_School_Calendar_Link__c}
+              >
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+              <p class="strong">
+                <a href={contactDetails.Current_School_Calendar_Link__c}>Schedule Meeting</a>
+              </p>
+            </div>
+          </div>
+        </template>
+
+        <template
+                if:true={contactDetails.Current_School_Admin_Email__c}
+              >
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+              <p class="strong">
+                <a href={schoolAdminEmail}>Email school admin</a>
+              </p>
+            </div>
+          </div>
+        </template>
+
+        <template
+                if:true={contactDetails.Current_School_Principal_Email__c}
+              >
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+              <p class="strong">
+                <a href={schoolPrincipalEmail}>Email school principal</a>
+              </p>
+            </div>
+          </div>
+        </template>
+
+        <template
+                if:true={contactDetails.Current_School_Admin_Email__c}
+              >
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+              <p class="strong">
+                <a href={schoolAdminEmail}>Student support request</a>
+              </p>
+            </div>
+          </div>
+        </template>
+
+        <!--<div class="slds-grid slds-gutters">
+          <div class="slds-col">
+            <p class="strong">
+              <a href="/s/events">Schedule meeting</a>
+            </p>
+          </div>
+        </div>-->
+      </template>
+    </div>
+  </template>
+</template>

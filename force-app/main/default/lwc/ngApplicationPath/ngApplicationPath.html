@@ -1,0 +1,39 @@
+<template>
+  <div class="slds-path ng-path">
+    <div class="slds-region_small">
+      <div class="slds-path slds-path_has-coaching slds-is-expanded">
+        <div class="slds-grid slds-path__track slds-has-overflow">
+          <div class="slds-grid slds-path__scroller-container">
+            <div class="slds-path__scroller">
+              <div class="slds-path__scroller_inner">
+                <ul
+                  class="slds-path__nav"
+                  role="listbox"
+                  aria-orientation="horizontal"
+                >
+                  <template if:true={allApplicationStatusList}>
+                    <template
+                      for:each={allApplicationStatusList}
+                      for:item="applicationStatus"
+                    >
+                      <li
+                        class={applicationStatus.styleClass}
+                        key={applicationStatus.name}
+                      >
+                        <span class="slds-path__link">
+                          <span class="slds-path__title"
+                            >{applicationStatus.name}
+                          </span>
+                        </span>
+                      </li>
+                    </template>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

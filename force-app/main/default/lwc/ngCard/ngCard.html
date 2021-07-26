@@ -1,0 +1,21 @@
+<template>
+  <div class="ng-box ng-box-full ng-box-colored ng-card flex p-vertical_medium p-horizontal_medium">
+    <!--<div class="tool-tip">3</div>-->
+    <div class="flex flex-grow-4" onclick={openStudentPage}>
+        <c-ng-image 
+          img-class="profile-icon"
+          img-url={profilePictureUrl}
+        ></c-ng-image>
+      <div class="content-div p-left_small p-top_x-small">
+        <h3>{firstName}
+          <!--<span class="slds-badge slds-theme_error font-regular m-left_medium ngBadge tiny">ABSENT</span>-->
+        </h3>
+        <p class="tiny p-top_xx-small">{schoolName}</p>
+      </div>
+    </div>
+
+    <div class="flex">
+      <c-ng-card-actions student-id={studentId} show-view-student-link="true"></c-ng-card-actions>
+    </div>
+  </div>
+</template>

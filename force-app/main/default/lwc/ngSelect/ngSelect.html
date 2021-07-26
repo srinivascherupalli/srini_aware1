@@ -1,0 +1,115 @@
+<!--
+ - Created by LookThink
+ -->
+
+<!-- COG Select -->
+<template>
+
+    <!-- Read Only Version -->
+    <div if:true={readOnly} class={classFormElement}>
+        <span class="slds-form-element__label">{label}</span>
+        <div class="slds-form-element__control">
+            <div class="slds-form-element__static">
+                <p>
+                    {selectedLabel}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Non Read Only -->
+    <div if:false={readOnly} class={classFormElement}>
+        <label class="slds-form-element__label" for={fieldId}>
+            <abbr if:true={required} class="slds-required" title="required">* </abbr>
+            {label}
+        </label>
+        <div class="slds-form-element__control">
+            <div class="slds-select_container">
+
+                <select class="slds-select" onchange={handleChange} name={fieldName} id={fieldId} disabled={disabled} >
+
+                    <!-- Placeholder -->
+                    <template if:true={placeholderOption} >
+                        <option if:true={placeholderOption.isDisabled}
+                                value={placeholderOption.value}
+                                selected={placeholderOption.isSelected}
+                                disabled={placeholderOption.isDisabled} >
+                            {placeholderOption.label}
+                        </option>
+                        <option if:false={placeholderOption.isDisabled}
+                                value={placeholderOption.value}
+                                selected={placeholderOption.isSelected} >
+                            {placeholderOption.label}
+                        </option>
+                    </template>
+
+                    <template for:each={options} for:item="option" >
+
+                        <!-- Non Grouped -->
+                        <template if:false={option.options}>
+                            <option if:true={option.isDisabled}
+                                    key={option.key}
+                                    value={option.value}
+                                    selected={option.isSelected}
+                                    disabled={option.isDisabled} >
+                                {option.label}
+                            </option>
+                            <option if:false={option.isDisabled}
+                                    key={option.key}
+                                    value={option.value}
+                                    selected={option.isSelected} >
+                                {option.label}
+                            </option>
+                        </template>
+
+                        <!-- Grouped -->
+                        <template if:true={option.options}>
+                            <optgroup if:true={option.disabled}
+                                      key={option.key}
+                                      label={option.label}
+                                      disabled={option.disabled}>
+                                <template for:each={option.options} for:item="groupedOption" >
+                                    <option if:true={groupedOption.isDisabled}
+                                            key={groupedOption.key}
+                                            value={groupedOption.value}
+                                            selected={groupedOption.isSelected} >
+                                        {groupedOption.label}
+                                    </option>
+                                    <option if:false={groupedOption.isDisabled}
+                                            key={groupedOption.key}
+                                            value={groupedOption.value}
+                                            selected={groupedOption.isSelected} >
+                                        {groupedOption.label}
+                                    </option>
+                                </template>
+                            </optgroup>
+                            <optgroup if:false={option.disabled}
+                                      key={option.key}
+                                      label={option.label}>
+                                <template for:each={option.options} for:item="groupedOption" >
+                                    <option if:true={groupedOption.isDisabled}
+                                            key={groupedOption.key}
+                                            value={groupedOption.value}
+                                            selected={groupedOption.isSelected} >
+                                        {groupedOption.label}
+                                    </option>
+                                    <option if:false={groupedOption.isDisabled}
+                                            key={groupedOption.key}
+                                            value={groupedOption.value}
+                                            selected={groupedOption.isSelected} >
+                                        {groupedOption.label}
+                                    </option>
+                                </template>
+                            </optgroup>
+                        </template>
+                    </template>
+
+                </select>
+            </div>
+        </div>
+        <template if:true={hasError}>
+            <div class="slds-text-color_destructive slds-form-element__help">{messageError}</div>
+        </template>
+    </div>
+
+</template>

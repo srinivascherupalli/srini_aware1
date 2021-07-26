@@ -1,0 +1,78 @@
+<template>
+  <div class="card-actions">
+    <div onclick={toggleSwitch}>
+      <c-ng-icon name="threedots" type="utility" size="small"></c-ng-icon>
+    </div>
+
+    <div class={sldsClass}>
+      <div class="slds-dropdown slds-dropdown_left ng-dropdown">
+        <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+
+          <template if:true={showViewStudentLink}>
+            <template if:true={viewStudentLink}>
+              <li class="slds-dropdown__item" role="presentation">
+                <a href={viewStudentLink} role="menuitem" tabindex="0">
+                  <span class="slds-truncate" title="View Student"
+                    >View Student</span
+                  >
+                </a>
+              </li>
+              <li class="slds-has-divider_top-space" role="separator"></li>
+            </template>
+          </template>
+
+          <template if:true={editStudentLink}>
+          <li class="slds-dropdown__item" role="presentation">
+            <a href={editStudentLink} role="menuitem" tabindex="-1">
+              <span class="slds-truncate" title="Edit Details"
+                >Edit Details</span
+              >
+            </a>
+          </li>
+          <li class="slds-has-divider_top-space" role="separator"></li>
+        </template>
+          <li class="slds-dropdown__item" role="presentation">
+            <a href="/s/applications/new-application" role="menuitem" tabindex="-1">
+              <span class="slds-truncate" title="New School Application"
+                >New School Application</span
+              >
+            </a>
+          </li>
+          
+          <li class="slds-has-divider_top-space" role="separator"></li>
+          <li class="slds-dropdown__item" role="presentation">
+            <a href={exitApplicationLink} role="menuitem" tabindex="-1">
+              <span class="slds-truncate" title="New Exit Application"
+                >New Exit Application</span
+              >
+            </a>
+          </li>
+
+          <template if:true={applicationId}>
+            <li class="slds-has-divider_top-space" role="separator"></li>
+            <li class="slds-dropdown__item" role="presentation">
+              <a role="menuitem" onclick={openModal}>
+                <span class="slds-truncate" title="Cancel Application"
+                  >Cancel Application</span
+                >
+              </a>
+            </li>
+            </template>
+        </ul>
+      </div>
+    </div>
+
+    
+    <template if:true={showConfirm}>
+      <c-ng-confirmation-dialog
+      visible="true"
+      title="Cancel Application"
+      message="Are you sure want to cancel the application."
+      confirm-label="Yes"
+      cancel-label="Cancel"
+      original-message={applicationId}
+      ondialogclick={handleDialogClick}
+    ></c-ng-confirmation-dialog>
+    </template>
+  </div>
+</template>

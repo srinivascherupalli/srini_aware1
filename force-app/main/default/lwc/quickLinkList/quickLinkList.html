@@ -1,0 +1,11 @@
+<template>
+  <div class="h3">{linksTitle}</div>
+  <template for:each={links} for:item="link" for:index="index">
+      <c-quick-link  key={link.index}
+      label={link.label}
+      link={link.url}
+      link-style="border-style"
+      >
+    </c-quick-link>
+  </template>
+</template>
